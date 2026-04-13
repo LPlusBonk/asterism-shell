@@ -5,25 +5,29 @@ import QtQuick.Layouts
 import qs.components
 import qs.config
 
-StyledRect {
-    id: wrapper
-
-    color: Config.colors.accent
-    radius: Config.structure.rounding.full
-
-    implicitHeight: childrenRect.height + Config.structure.padding.small * 2
+Item {
     Layout.fillWidth: true
+    implicitHeight: content.height + content.anchors.margins * 2
+
+    StyledRect {
+        id: wrapper
+
+        color: Config.colors.accent
+        radius: Config.structure.rounding.full
+        anchors.fill: content
+    }
 
     ColumnLayout {
+        id: content
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: Config.structure.padding.small
 
         Text {
             id: id_text
 
             Layout.alignment: Qt.AlignHCenter
+            Layout.bottomMargin: Config.structure.padding.medium
+            Layout.topMargin: Config.structure.padding.medium
 
             color: Config.colors.background
 

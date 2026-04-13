@@ -65,6 +65,7 @@ Item {
                 Column {
                     anchors.fill: parent
                     Loader {
+                        id: chargeIcon
                         anchors.horizontalCenter: parent.horizontalCenter
                         sourceComponent: MaterialIcon {
                             text: {
@@ -86,16 +87,21 @@ Item {
                                 return charging ? `battery_charging_${(level + 3) * 10}` : `battery_${level}_bar`;
                             }
                             font.pointSize: 24
-                            color: !UPower.onBattery || UPower.displayDevice.percentage > 0.2 ? root.colour : Colours.palette.m3error
+                            // color: !UPower.onBattery || UPower.displayDevice.percentage > 0.2 ? root.colour : Colours.palette.m3error
                             fill: 1
                         }
                     }
 
+                    Item {
+                        implicitHeight: charge.height - chargeIcon.height - chargeText.height
+                    }
+
                     Text {
+                        id: chargeText
                         text: root.batteryPercentage
 
                         anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.bottom: parent.bottom
+                        // anchors.bottom: parent.bottom
                         anchors.bottomMargin: 4
                         font.pixelSize: 15
                     }

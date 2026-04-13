@@ -6,7 +6,8 @@ JsonObject {
     property Padding padding: Padding {}
     property Rounding rounding: Rounding {}
     property int barWidth: 40
-    property int borderWidth: padding.small
+    property int borderWidth: 0
+    // property int borderWidth: padding.small
 
     component Padding: JsonObject {
         property int verysmall: 4
