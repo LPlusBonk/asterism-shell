@@ -23,7 +23,7 @@ Item {
         id: background
         anchors.fill: parent
 
-        border.color: Config.colors.accent
+        border.color: !UPower.onBattery || UPower.displayDevice.percentage > 0.2 ? Config.colors.accent : Config.colors.color9
         border.width: 2
         radius: Config.structure.rounding.full
     }
@@ -37,7 +37,7 @@ Item {
             id: fill
             anchors.fill: parent
             radius: Config.structure.rounding.full
-            color: Config.colors.accent
+            color: !UPower.onBattery || UPower.displayDevice.percentage > 0.2 ? Config.colors.accent : Config.colors.color9
             visible: false
             layer.enabled: true
         }
@@ -96,17 +96,16 @@ Item {
                     }
 
                     Item {
-                        implicitHeight: charge.height - chargeIcon.height - chargeText.height
+                        implicitHeight: charge.height - chargeIcon.height - chargeText.height - 6
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                     }
 
                     Text {
                         id: chargeText
                         text: root.batteryPercentage
-                        renderType: Text.NativeRendering // The "Magic Fix" for many masking issues
 
                         anchors.horizontalCenter: parent.horizontalCenter
-                        // anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 4
                         font.pixelSize: 15
                     }
                 }
