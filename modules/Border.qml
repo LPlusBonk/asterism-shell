@@ -29,6 +29,36 @@ Item {
     }
 
     Item {
+        anchors.fill: parent
+
+        layer.enabled: true
+        layer.effect: MultiEffect {
+            // Shadow Properties
+            shadowEnabled: true
+            shadowColor: "black"
+            shadowBlur: 1.0     // Adjust for "softness"
+            shadowOpacity: 0.7
+            shadowHorizontalOffset: 0
+            shadowVerticalOffset: 0
+
+            // The Secret Sauce:
+            // We mask the shadow using the same mask so it only stays on the border.
+            maskEnabled: true
+            maskSource: mask
+            maskInverted: true
+            autoPaddingEnabled: false
+        }
+
+        // We use the 'mask' item itself as the source for the shadow.
+        // Because the mask is the "hole," the shadow will radiate from the hole's edges.
+        ShaderEffectSource {
+            anchors.fill: parent
+            sourceItem: mask
+            live: true
+        }
+    }
+
+    Item {
         id: mask
 
         anchors.fill: parent
