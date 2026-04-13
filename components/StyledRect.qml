@@ -1,3 +1,5 @@
 import QtQuick
 
-Rectangle {}
+Rectangle {
+    color: "transparent"
+}

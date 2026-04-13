@@ -6,12 +6,12 @@ import qs.components
 StyledWindow {
     id: previewRoot
     name: "color-preview"
-    
+
     property int padding: 20
 
     // Set fixed boundaries for the window so the contents know when to scroll
-    width: 700
-    height: 600
+    implicitWidth: 700
+    implicitHeight: 600
 
     Rectangle {
         anchors.fill: parent
@@ -42,12 +42,12 @@ StyledWindow {
         anchors.leftMargin: padding
         anchors.rightMargin: padding
         anchors.bottomMargin: padding
-        
+
         // Tells the Flickable how much room it needs to scroll through
         contentHeight: grid.implicitHeight
-        
+
         // Prevents the grid items from drawing over the title when scrolling up
-        clip: true 
+        clip: true
 
         // The 2-column grid
         GridLayout {
@@ -61,20 +61,19 @@ StyledWindow {
                 model: Object.entries(Config.colors)
 
                 delegate: Rectangle {
-                    property string colorName: modelData[0]
-                    property color colorValue: modelData[1]
                     required property var modelData
 
-                    // 1. Exclude keys ending in "Changed" 
+                    property string colorName: modelData[0]
+                    property string colorValue: modelData[1]
+
+                    // 1. Exclude keys ending in "Changed"
                     // 2. Ensure the value is actually a color/object, not a function
-                    visible: !colorName.endsWith("Changed") && 
-                            !colorName.startsWith("_") && 
-                            typeof(colorValue) !== "function"
-                    
+                    visible: !colorName.endsWith("Changed") && !colorName.startsWith("_") && typeof (colorValue) !== "function"
+
                     Layout.fillWidth: true
                     // Use preferredHeight in Layouts instead of height
                     Layout.preferredHeight: visible ? 50 : 0
-                    color: "transparent" 
+                    color: "transparent"
 
                     RowLayout {
                         anchors.fill: parent

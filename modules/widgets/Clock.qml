@@ -5,29 +5,28 @@ import QtQuick.Layouts
 import qs.components
 import qs.config
 
-// StyledRect {
-Rectangle {
+StyledRect {
     id: wrapper
 
     color: Config.colors.accent
     radius: Config.structure.rounding.full
 
-    implicitWidth: childrenRect.width
-    implicitHeight: childrenRect.height
-    // implicitWidth: 100
-    // implicitHeight: 100
+    implicitHeight: childrenRect.height + Config.structure.padding.small * 2
+    Layout.fillWidth: true
 
     ColumnLayout {
-        id: col
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: Config.structure.padding.small
 
         Text {
             id: id_text
 
-            Layout.margins: 10
+            Layout.alignment: Qt.AlignHCenter
 
             color: Config.colors.background
 
-            // text: "--\n--\n--\n--"
             text: Qt.formatDateTime(new Date(), "hh\nmm\nss\nA")
             font.pointSize: Config.font.size.small
             font.weight: 900

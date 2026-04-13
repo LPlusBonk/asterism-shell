@@ -11,14 +11,14 @@ Variants {
     Scope {
         id: scope
 
-        property int borderThickness: Config.structure.padding.small
+        property int borderThickness: Config.structure.borderWidth
 
         required property ShellScreen modelData
 
         Exclusions {
             screen: scope.modelData
             bar: bar
-            thickness: borderThickness
+            thickness: scope.borderThickness
         }
 
         StyledWindow {
@@ -34,15 +34,16 @@ Variants {
             }
 
             WlrLayershell.exclusionMode: ExclusionMode.Ignore
-            WlrLayershell.keyboardFocus: visibilities.launcher || visibilities.session ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
+            // WlrLayershell.keyboardFocus: visibilities.launcher || visibilities.session ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
 
             Border {
                 bar: bar
-                rounding: Config.structure.rounding.medium
-                thickness: borderThickness
+                // rounding: Config.structure.rounding.large
+                rounding: 20
+                thickness: scope.borderThickness
             }
 
-            Bar {
+            BarWrapper {
                 id: bar
             }
         }

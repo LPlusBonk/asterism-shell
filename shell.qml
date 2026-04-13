@@ -6,6 +6,8 @@ import QtQuick
 import qs.modules
 
 ShellRoot {
+    // Testing mask stacking to create XOR mask effects
+    // Test {}
     // ThemePreview {}
     Background {}
     Drawers {}

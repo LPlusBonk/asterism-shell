@@ -6,6 +6,7 @@ JsonObject {
     component Family: JsonObject {
         property string mono: "CaskaydiaCove NF"
         property string clock: "Rubik"
+        property string material: "Material Symbols Rounded"
     }
     component Size: JsonObject {
         property int extrasmall: 10
