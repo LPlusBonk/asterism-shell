@@ -15,6 +15,9 @@ Item {
     implicitHeight: 64 + 16
     Layout.fillWidth: true
     property int batteryPercentage: Math.round(UPower.displayDevice.percentage * 100)
+    // property int batteryPercentage: 30
+    property double threshMin: 0.5
+    property double spreadMin: 1
 
     StyledRect {
         id: background
@@ -99,6 +102,7 @@ Item {
                     Text {
                         id: chargeText
                         text: root.batteryPercentage
+                        renderType: Text.NativeRendering // The "Magic Fix" for many masking issues
 
                         anchors.horizontalCenter: parent.horizontalCenter
                         // anchors.bottom: parent.bottom
@@ -107,6 +111,7 @@ Item {
                     }
                 }
                 visible: false
+                layer.smooth: true
             }
 
             MultiEffect {
@@ -116,6 +121,8 @@ Item {
                 maskEnabled: true
                 maskSource: charge
                 maskInverted: true
+                maskThresholdMin: root.threshMin
+                maskSpreadAtMin: root.spreadMin
             }
 
             MultiEffect {
@@ -125,8 +132,11 @@ Item {
                 maskEnabled: true
                 maskSource: mask
                 maskInverted: true
+                // maskThresholdMin: root.threshMin
+                // maskSpreadAtMin: root.spreadMin
             }
 
+            layer.smooth: true
             visible: false
         }
 
@@ -134,8 +144,15 @@ Item {
             anchors.fill: rendered
             source: fill
 
+            // blur: 0
+            // blurEnabled: true
+            // blurMax: 1
+            // blurMultiplier: 1
+
             maskEnabled: true
             maskSource: sum
+            maskThresholdMin: root.threshMin
+            maskSpreadAtMin: root.spreadMin
             // maskInverted: true
         }
     }
