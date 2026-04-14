@@ -24,7 +24,16 @@ ColumnLayout {
         implicitHeight: root.spacer
     }
 
+    OsIcon {
+        Layout.margins: root.marg
+        Layout.fillWidth: true
+    }
+
     Workspaces {
+        Layout.margins: root.marg
+    }
+
+    Day {
         Layout.margins: root.marg
     }
 
