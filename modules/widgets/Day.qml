@@ -22,6 +22,14 @@ Item {
         id: content
         anchors.left: parent.left
         anchors.right: parent.right
+        Loader {
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            sourceComponent: MaterialIcon {
+                text: "calendar_month"
+                color: Config.colors.accent
+            }
+        }
 
         Text {
             id: id_text
