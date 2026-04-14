@@ -2,6 +2,6 @@
 - Bluetooth status button
 - Audio status button
 - Tray
-- Date
 - Flash drive tools
 - Animate desktop switching
+- Popout calender
