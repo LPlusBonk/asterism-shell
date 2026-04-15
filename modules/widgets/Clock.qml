@@ -5,42 +5,27 @@ import QtQuick.Layouts
 import qs.components
 import qs.config
 
-Item {
-    Layout.fillWidth: true
-    implicitHeight: content.height + content.anchors.margins * 2
+Widget {
+    backgroundColor: Config.colors.accent
 
-    StyledRect {
-        id: wrapper
+    Text {
+        id: id_text
 
-        color: Config.colors.accent
-        radius: Config.layout.rounding.full
-        anchors.fill: content
-    }
+        Layout.alignment: Qt.AlignHCenter
+        Layout.bottomMargin: Config.layout.padding.medium
+        Layout.topMargin: Config.layout.padding.medium
 
-    ColumnLayout {
-        id: content
-        anchors.left: parent.left
-        anchors.right: parent.right
+        color: Config.colors.background
 
-        Text {
-            id: id_text
+        text: Qt.formatDateTime(new Date(), "hh\nmm\nss\nA")
+        font.pointSize: Config.font.size.small
+        font.weight: 900
 
-            Layout.alignment: Qt.AlignHCenter
-            Layout.bottomMargin: Config.layout.padding.medium
-            Layout.topMargin: Config.layout.padding.medium
-
-            color: Config.colors.background
-
-            text: Qt.formatDateTime(new Date(), "hh\nmm\nss\nA")
-            font.pointSize: Config.font.size.small
-            font.weight: 900
-
-            Timer {
-                interval: 1000
-                running: true
-                repeat: true
-                onTriggered: parent.text = Qt.formatDateTime(new Date(), "hh\nmm\nss\nA")
-            }
+        Timer {
+            interval: 1000
+            running: true
+            repeat: true
+            onTriggered: parent.text = Qt.formatDateTime(new Date(), "hh\nmm\nss\nA")
         }
     }
 }

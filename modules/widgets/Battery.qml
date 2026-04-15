@@ -1,8 +1,5 @@
 pragma ComponentBehavior: Bound
 import Quickshell.Services.UPower
-import Quickshell
-import Quickshell.Wayland
-import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Effects
@@ -10,28 +7,21 @@ import QtQuick.Effects
 import qs.components
 import qs.config
 
-Item {
+Widget {
     id: root
-    implicitHeight: 64 + 16
+    borderWidth: 2
+    padding: 6
+    borderColor: Config.colors.accent
     Layout.fillWidth: true
     property int batteryPercentage: Math.round(UPower.displayDevice.percentage * 100)
-    // property int batteryPercentage: 30
     property double threshMin: 0.5
     property double spreadMin: 1
 
-    StyledRect {
-        id: background
-        anchors.fill: parent
-
-        border.color: !UPower.onBattery || UPower.displayDevice.percentage > 0.2 ? Config.colors.accent : Config.colors.color9
-        border.width: 2
-        radius: Config.layout.rounding.full
-    }
-
     Item {
         id: rendered
-        anchors.fill: parent
-        anchors.margins: 6
+        implicitHeight: 64 + 16
+        Layout.fillWidth: true
+
 
         Rectangle {
             id: fill
