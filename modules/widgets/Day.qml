@@ -14,7 +14,7 @@ Item {
     //     id: wrapper
     //
     //     color: Config.colors.accent
-    //     radius: Config.structure.rounding.full
+    //     radius: Config.layout.rounding.full
     //     anchors.fill: content
     // }
 
@@ -35,8 +35,8 @@ Item {
             id: id_text
 
             Layout.alignment: Qt.AlignHCenter
-            // Layout.bottomMargin: Config.structure.padding.medium
-            // Layout.topMargin: Config.structure.padding.medium
+            // Layout.bottomMargin: Config.layout.padding.medium
+            // Layout.topMargin: Config.layout.padding.medium
 
             color: Config.colors.accent
 

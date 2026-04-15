@@ -17,7 +17,7 @@ Item {
 
         border.color: Config.colors.accent
         border.width: 2
-        radius: Config.structure.rounding.full
+        radius: Config.layout.rounding.full
 
         anchors.fill: parent
     }
@@ -51,7 +51,7 @@ Item {
 
                 // color: "red"
                 color: workspace.isActive ? colActive : (workspace.ws ? colInactive : colEmpty)
-                radius: Config.structure.rounding.full
+                radius: Config.layout.rounding.full
 
                 Text {
                     anchors.centerIn: parent

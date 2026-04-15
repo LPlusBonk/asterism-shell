@@ -9,8 +9,8 @@ import qs.config
 ColumnLayout {
     id: root
 
-    property int marg: Config.structure.padding.small
-    property int spacer: Config.structure.borderWidth - marg
+    property int marg: Config.layout.padding.small
+    property int spacer: Config.layout.borderWidth - marg
 
     spacing: 0
 

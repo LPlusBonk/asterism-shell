@@ -9,8 +9,8 @@ import QtQuick.Effects
 Item {
     id: root
 
-    readonly property int padding: Math.max(Config.structure.padding.small, Config.structure.borderWidth)
-    readonly property int contentWidth: Config.structure.barWidth + padding * 2
+    readonly property int padding: Math.max(Config.layout.padding.small, Config.layout.borderWidth)
+    readonly property int contentWidth: Config.layout.barWidth + padding * 2
 
     anchors.top: parent.top
     anchors.bottom: parent.bottom

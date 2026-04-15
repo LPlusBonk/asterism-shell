@@ -25,7 +25,7 @@ Item {
 
         border.color: !UPower.onBattery || UPower.displayDevice.percentage > 0.2 ? Config.colors.accent : Config.colors.color9
         border.width: 2
-        radius: Config.structure.rounding.full
+        radius: Config.layout.rounding.full
     }
 
     Item {
@@ -36,7 +36,7 @@ Item {
         Rectangle {
             id: fill
             anchors.fill: parent
-            radius: Config.structure.rounding.full
+            radius: Config.layout.rounding.full
             color: !UPower.onBattery || UPower.displayDevice.percentage > 0.2 ? Config.colors.accent : Config.colors.color9
             visible: false
             layer.enabled: true

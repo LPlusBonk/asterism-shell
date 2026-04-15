@@ -64,11 +64,11 @@ StyledWindow {
                 color: "transparent"
                 visible: false
                 layer.enabled: true
-                Text {
-                    anchors.centerIn: parent
-                    text: "meow"
-                    font.pixelSize: 20
-                }
+                // Text {
+                //     anchors.centerIn: parent
+                //     text: "meow"
+                //     font.pixelSize: 20
+                // }
             }
 
             MultiEffect {

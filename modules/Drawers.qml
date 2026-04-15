@@ -11,7 +11,7 @@ Variants {
     Scope {
         id: scope
 
-        property int borderThickness: Config.structure.borderWidth
+        property int borderThickness: Config.layout.borderWidth
 
         required property ShellScreen modelData
 
@@ -38,7 +38,7 @@ Variants {
 
             Border {
                 bar: bar
-                // rounding: Config.structure.rounding.large
+                // rounding: Config.layout.rounding.large
                 rounding: 20
                 thickness: scope.borderThickness
             }
