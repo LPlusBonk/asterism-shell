@@ -9,6 +9,6 @@ ShellRoot {
     // Testing mask stacking to create XOR mask effects
     // Test {}
     // ThemePreview {}
-    Background {}
+    // Background {}
     Drawers {}
 }
