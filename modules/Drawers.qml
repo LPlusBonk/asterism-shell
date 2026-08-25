@@ -8,7 +8,7 @@ import qs.config
 
 Variants {
     model: Quickshell.screens
-    Scope {
+    delegate: Scope {
         id: scope
 
         property int borderThickness: Config.layout.borderWidth
@@ -23,6 +23,8 @@ Variants {
 
         StyledWindow {
             name: "drawers"
+
+            screen: scope.modelData
 
             anchors.top: true
             anchors.bottom: true
@@ -45,6 +47,7 @@ Variants {
 
             BarWrapper {
                 id: bar
+                screen: scope.modelData
             }
         }
     }

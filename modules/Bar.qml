@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Layouts
+import Quickshell
 
 import qs.modules.widgets
 import qs.config
@@ -9,6 +10,7 @@ import qs.config
 ColumnLayout {
     id: root
 
+    property ShellScreen screen
     property int marg: Config.layout.padding.small
     property int spacer: Config.layout.borderWidth - marg
 
@@ -31,6 +33,7 @@ ColumnLayout {
 
     Workspaces {
         Layout.margins: root.marg
+        screen: root.screen
     }
 
     Day {

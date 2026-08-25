@@ -9,6 +9,8 @@ import QtQuick.Effects
 Item {
     id: root
 
+
+    property ShellScreen screen
     readonly property int padding: Math.max(Config.layout.padding.small, Config.layout.borderWidth)
     readonly property int contentWidth: Config.layout.barWidth + padding * 2
 
@@ -45,6 +47,7 @@ Item {
         sourceComponent: Bar {
             id: b
             implicitWidth: 80
+            screen: root.screen
         }
         active: true
     }
