@@ -20,7 +20,7 @@ Widget {
     Repeater {
         model: 10
 
-        Rectangle {
+        InteractiveButton {
             id: background
             required property int index
 
@@ -51,16 +51,26 @@ Widget {
 
             Layout.fillWidth: true
             implicitHeight: width
-            radius: Config.layout.rounding.full
             visible: (index + 1 < numWs) || isActiveHere || ws
+            hoverScale: 1.12
+            pressScale: 0.9
+
+            onClicked: Hyprland.dispatch(`hl.dsp.focus({workspace = ${background.index + 1}})`)
 
             Rectangle {
                 anchors.fill: parent
-                anchors.margins: 2
+                anchors.margins: 0
                 radius: Math.max(0, parent.radius - 2)
                 color: "transparent"
                 border.width: parent.showBorder ? 2 : 0
                 border.color: parent.showBorder ? parent.borderCol : "transparent"
+
+                Behavior on border.color {
+                    ColorAnimation {
+                        duration: 150
+                        easing.type: Easing.OutCubic
+                    }
+                }
             }
 
             Text {
@@ -68,11 +78,13 @@ Widget {
                 text: background.index + 1
                 // text is light on dark (focused active) or dim on bare (empty/foreign)
                 color: parent.isActiveHere && parent.thisMonitorFocused ? parent.colEmpty : parent.hasWindows && !parent.isOtherMonitor ? parent.colActive : parent.colInactive
-            }
 
-            MouseArea {
-                anchors.fill: parent
-                onClicked: Hyprland.dispatch("workspace " + (background.index + 1))
+                Behavior on color {
+                    ColorAnimation {
+                        duration: 150
+                        easing.type: Easing.OutCubic
+                    }
+                }
             }
         }
     }

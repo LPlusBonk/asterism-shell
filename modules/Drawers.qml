@@ -1,10 +1,12 @@
 pragma ComponentBehavior: Bound
+import QtQuick
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Hyprland
 import qs.components
 import qs.modules
 import qs.config
+import qs.services
 
 Variants {
     model: Quickshell.screens
@@ -12,6 +14,7 @@ Variants {
         id: scope
 
         property int borderThickness: Config.layout.borderWidth
+        property bool audioOpen: Visibilities.audioScreen === scope.modelData
 
         required property ShellScreen modelData
 
@@ -22,6 +25,7 @@ Variants {
         }
 
         StyledWindow {
+            id: window
             name: "drawers"
 
             screen: scope.modelData
@@ -32,11 +36,16 @@ Variants {
             anchors.right: true
 
             mask: Region {
-                item: bar
+                Region {
+                    item: bar
+                }
+                Region {
+                    item: scope.audioOpen ? audioFlyout : null
+                }
             }
 
             WlrLayershell.exclusionMode: ExclusionMode.Ignore
-            // WlrLayershell.keyboardFocus: visibilities.launcher || visibilities.session ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
+            WlrLayershell.keyboardFocus: scope.audioOpen ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
 
             Border {
                 bar: bar
@@ -48,6 +57,19 @@ Variants {
             BarWrapper {
                 id: bar
                 screen: scope.modelData
+            }
+
+            Flyout {
+                id: audioFlyout
+                anchorItem: bar.audioButton
+                shown: scope.audioOpen
+                content: AudioPanel {}
+            }
+
+            HyprlandFocusGrab {
+                active: scope.audioOpen
+                windows: [window]
+                onCleared: Visibilities.closeAudio()
             }
         }
     }

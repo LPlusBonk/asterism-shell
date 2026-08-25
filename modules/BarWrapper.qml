@@ -13,6 +13,7 @@ Item {
     property ShellScreen screen
     readonly property int padding: Math.max(Config.layout.padding.small, Config.layout.borderWidth)
     readonly property int contentWidth: Config.layout.barWidth + padding * 2
+    readonly property Item audioButton: content.item?.audioButton ?? null
 
     anchors.top: parent.top
     anchors.bottom: parent.bottom

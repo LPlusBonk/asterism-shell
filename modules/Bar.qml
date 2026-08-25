@@ -14,6 +14,8 @@ ColumnLayout {
     property int marg: Config.layout.padding.small
     property int spacer: Config.layout.borderWidth - marg
 
+    property alias audioButton: audioButtonItem
+
     spacing: 0
 
     // implicitWidth: 40
@@ -42,6 +44,12 @@ ColumnLayout {
 
     Item {
         Layout.fillHeight: true
+    }
+
+    AudioButton {
+        id: audioButtonItem
+        Layout.margins: root.marg
+        screen: root.screen
     }
 
     Battery {
